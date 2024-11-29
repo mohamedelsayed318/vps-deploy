@@ -153,6 +153,16 @@ systemctl start nginx
 systemctl reload nginx
 ```
 
+##### Nginx Status 
+```
+service nginx status
+```
+
+##### Nginx syntax test 
+```
+nginx -t
+```
+
 ## Uploading Apps Using Git
 
 ```
