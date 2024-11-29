@@ -360,7 +360,7 @@ pm2 start npm --name "myapp" -- start
 ## Sample of nginx config file that have 4 things (Server, Frontend with nextjs, Dashboard with nextjs, Test or Dev with nextjs) 
 
 
-
+```
 server {
   server_name alsmsar.com www.alsmsar.com;
   location / {
@@ -524,3 +524,4 @@ server {
 
 
 }
+```
