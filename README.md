@@ -359,7 +359,7 @@ pm2 start npm --name "myapp" -- start
 
 
 
-## Sample of nginx config file that have 4 things (Server, Frontend with nextjs, Dashboard with nextjs, Test or Dev with nextjs) 
+##### Sample of nginx config file that have 4 things (Server, Frontend with nextjs, Dashboard with nextjs, Test or Dev with nextjs) 
 
 
 ```
