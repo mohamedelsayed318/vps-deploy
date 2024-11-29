@@ -34,31 +34,11 @@ The key's randomart image is:
 6. Copy your public SSH Key to your clipboard using the following code:
 ```pbcopy < ~/.ssh/id_rsa.pub```
 
-### For Windows
-1. Download PuTTY and PuTTYgen.
-2. Open up PuTTYgen and click the ```Generate```.
-3. Copy your key.
-4. Enter a key passphrase and confirm.
-5. Save the private key.
+7. make ssh key for github
 
-
-## Connection
-
-After copying the SSH Key go the to hosting service provider dashboard and paste your key and save. After,
-
-### For MAC OS / Linux
-
-```bash
-ssh root@<server ip address> 
-```
-
-### For Windows
-
-1. Open the PuTTY app.
-2. Enter your IP address.
-3. Open the following section:
-Connection - SSH - Auth
-4. Browse the folders and choose your private key.
+``` ssh-keygen -t ed25519 -C "mohamed@prop.support" ```
+8. copy this to github 
+``` clip < ~/.ssh/id_ed25519.pub ```
 
 ## First Configuration
 
