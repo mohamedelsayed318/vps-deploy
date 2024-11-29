@@ -32,13 +32,20 @@ The key's randomart image is:
 +-----------------+ 
 ```
 6. Copy your public SSH Key to your clipboard using the following code:
-```pbcopy < ~/.ssh/id_rsa.pub```
+```
+pbcopy < ~/.ssh/id_rsa.pub
+```
 
 7. make ssh key for github
 
-``` ssh-keygen -t ed25519 -C "mohamed@prop.support" ```
+```
+ssh-keygen -t ed25519 -C "mohamed@prop.support"
+```
+
 8. copy this to github 
-``` clip < ~/.ssh/id_ed25519.pub ```
+```
+clip < ~/.ssh/id_ed25519.pub
+```
 
 ## First Configuration
 
