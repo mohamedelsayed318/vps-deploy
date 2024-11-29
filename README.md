@@ -148,6 +148,11 @@ nano /var/www/netflix/index.html
 systemctl start nginx
 ```
 
+##### Restart Nginx
+```
+systemctl reload nginx
+```
+
 ## Uploading Apps Using Git
 
 ```
