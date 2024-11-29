@@ -350,3 +350,177 @@ Let’s Encrypt’s certificates are only valid for ninety days. To set a timer 
 systemctl status certbot.timer
 ```
 
+## Add next js to pm2 
+```
+pm2 start npm --name "myapp" -- start
+```
+
+
+
+## Sample of nginx config file that have 4 things (Server, Frontend with nextjs, Dashboard with nextjs, Test or Dev with nextjs) 
+
+
+
+server {
+  server_name alsmsar.com www.alsmsar.com;
+  location / {
+    proxy_pass http://195.26.251.157:3000;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+    }
+
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/alsmsar.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/alsmsar.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+}
+
+server {
+  server_name api.alsmsar.com www.api.alsmsar.com;
+  location / {
+    proxy_pass http://195.26.251.157:4000;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/alsmsar.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/alsmsar.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+}
+
+server {
+  server_name dashboard.alsmsar.com www.dashboard.alsmsar.com;
+  location / {
+    proxy_pass http://195.26.251.157:5000;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+    }
+
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/alsmsar.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/alsmsar.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+}
+server {
+    if ($host = www.alsmsar.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    if ($host = alsmsar.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+  server_name alsmsar.com www.alsmsar.com;
+    listen 80;
+    return 404; # managed by Certbot
+
+
+
+
+}
+
+server {
+    if ($host = www.api.alsmsar.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    if ($host = api.alsmsar.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+  listen 80;
+  server_name api.alsmsar.com www.api.alsmsar.com;
+    return 404; # managed by Certbot
+
+
+
+
+}
+
+server {
+    if ($host = www.dashboard.alsmsar.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    if ($host = dashboard.alsmsar.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+  server_name dashboard.alsmsar.com www.dashboard.alsmsar.com;
+    listen 80;
+    return 404; # managed by Certbot
+
+
+
+
+}
+
+
+server {
+  server_name dev.alsmsar.com www.dev.alsmsar.com;
+  location / {
+    proxy_pass http://195.26.251.157:7000;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+  }
+
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/dev.alsmsar.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/dev.alsmsar.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+}
+
+
+server {
+    if ($host = www.dev.alsmsar.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    if ($host = dev.alsmsar.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+  server_name dev.alsmsar.com www.dev.alsmsar.com;
+    listen 80;
+    return 404; # managed by Certbot
+
+
+
+
+}
