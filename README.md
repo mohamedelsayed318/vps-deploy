@@ -204,7 +204,18 @@ apt install nodejs
 ```
 apt install npm
 ```
-
+```
+sudo apt install curl
+```
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+```
+```
+nvm --version
+```
+```
+nvm install --lts
+```
 ```
 cd api
 ```
